@@ -6,8 +6,27 @@
 #ifndef "encrypt_h"
 #define "encrypt_h"
 
+#include <fstream>
+#include <iostream>
+#include <string>
 
+//The greet() outputs a greeting to the screen
+//Pre: None
+//Post: outputs a greeting to the screen
+void greet();
 
+//The signoff() outputs a signoff to the screen
+//Pre: None
+//Post: outputs a signoff to the screen
+void signoff();
 
+//The isEnd() checks to see if the end of the array is the end of the sentence
+//Pre: 
+//
+bool isEnd(const char source[],const short size);
+
+const short MAX_SENTENCES=20;
+
+const short MAX_WORDS=50;
 
 #endif  
