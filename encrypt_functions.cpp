@@ -3,6 +3,8 @@
 //File: encrypt_functions.cpp
 //Purpose: To decrypt a file based on a set encryption.
 
+#include "encrypt.h"
+
 void greet()
 {
   cout<<"Hello and welcome to the decryption protocol!";

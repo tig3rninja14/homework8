@@ -10,6 +10,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 //The greet() outputs a greeting to the screen
 //Pre: None
 //Post: outputs a greeting to the screen
