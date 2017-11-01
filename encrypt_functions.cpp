@@ -38,3 +38,33 @@ void removeJunk(string source[][MAX_WORDS], const short size1, const short size2
     }
   }
 }
+
+void fixApostrophe(string source[][MAX_WORDS], const short size1, const short size2)
+{
+  char word[MAX_SENTENCES];
+  
+  for (int i = 0; i<size1-1;i++)
+  {
+    for (int j = 0; j<size2-1; j++)
+    {
+      strcpy(word,source[i][j].c_str());
+      for (int k = strlen(word)-1; k>0; k--)
+      {
+        if (word[k]=='\'')
+        {
+          if (k!=strlen(word)-1)
+          {
+            swap(word[k],word[k+1]);
+          }else
+          {
+            swap(word[strlen(word)-1],word[0]);
+          }
+        }
+      }
+      source[i][j] = word;
+    }
+  }
+  return;
+}
+
+

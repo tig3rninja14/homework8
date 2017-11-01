@@ -25,6 +25,8 @@ int main()
   }
   
   removeJunk(data,sentence_cnt,cnt);
+  fixApostrophe(data,sentence_cnt,cnt);
+  
   
   for (int i = 0; i<sentence_cnt-1;i++)
   {

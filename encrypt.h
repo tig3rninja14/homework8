@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cstring>
 using namespace std;
 
 //The greet() outputs a greeting to the screen
@@ -34,6 +35,11 @@ const short MAX_WORDS=50;
 //Post:
 void removeJunk(string source[][MAX_WORDS], const short size1, const short size2);
 
+//The fixApostrophe() will unscramble words with apostrophes in them.
+//Pre:
+//Post:
+void fixApostrophe(string source[][MAX_WORDS], const short size1,
+                   const short size2);
 
 const short MAX_SENTENCES=20;
 
