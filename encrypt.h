@@ -3,13 +3,13 @@
 //File: encrypt.h
 //Purpose: To decrypt a file based on a set encryption.
 
-#ifndef "ENCRYPT_H"
-#define "ENCRYPT_H"
+#ifndef ENCRYPT_H
+#define ENCRYPT_H
 
-#include <fstream>
+
 #include <iostream>
 #include <string>
-
+#include <fstream>
 using namespace std;
 
 //The greet() outputs a greeting to the screen

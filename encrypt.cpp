@@ -8,16 +8,16 @@
 
 int main()
 {
-  string data[MAX_SENTENCES][MAX_WORDS]
+  string data[MAX_SENTENCES][MAX_WORDS];
   ifstream fin("encrypted.dat");
-  ofstream fout(decrypted.dat");
+  ofstream fout("decrypted.dat");
   short sentence_cnt =0;
   short cnt = 0;
   
   
-  while(fin>>data[sentence_cnt][cnt]
+  while(fin>>data[sentence_cnt][cnt])
   {
-    if(is_end(data[sentence_cnt][cnt].c_str(),data[sentence_cnt][cnt].strlen())
+    if(isEnd(data[sentence_cnt][cnt].c_str(),data[sentence_cnt][cnt].size())) 
     {
       sentence_cnt++;
     }
