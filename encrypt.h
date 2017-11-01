@@ -3,8 +3,8 @@
 //File: encrypt.h
 //Purpose: To decrypt a file based on a set encryption.
 
-#ifndef "encrypt_h"
-#define "encrypt_h"
+#ifndef "ENCRYPT_H"
+#define "ENCRYPT_H"
 
 #include <fstream>
 #include <iostream>
