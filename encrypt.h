@@ -22,13 +22,25 @@ void greet();
 //Post: outputs a signoff to the screen
 void signoff();
 
-//The isEnd() checks to see if the end of the array is the end of the sentence
+//The isEnd() checks to see if the end of the array is the end of the sentence.
 //Pre: 
-//
+//Post:
 bool isEnd(const char source[],const short size);
+
+const short MAX_WORDS=50;
+
+//The removeJunk() removes junk words from the enryption.
+//Pre:
+//Post:
+void removeJunk(string source[][MAX_WORDS], const short size1, const short size2);
+
 
 const short MAX_SENTENCES=20;
 
-const short MAX_WORDS=50;
+
+
+const short NUM_JUNK = 4;
+
+const string JUNK[NUM_JUNK] = {"--umm--","--errr--","--like--","--nstuff--"};
 
 #endif  

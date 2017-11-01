@@ -24,6 +24,8 @@ int main()
     cnt++;
   }
   
+  removeJunk(data,sentence_cnt,cnt);
+  
   for (int i = 0; i<sentence_cnt-1;i++)
   {
     for (int j = 0; j<cnt-1; j++)
