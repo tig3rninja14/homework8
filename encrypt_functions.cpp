@@ -82,7 +82,7 @@ void swapWords(string source[][MAX_WORDS], const short size1, const short size2)
         swap(source[i][j],source[i][size2-1]);
         source[i][size2-1][first]=source[i][size2-1][first]-32;
         source[i][first][first]=source[i][first][first]+32;
-        
+        strcat(source,source[i][size2-1][source[i][size2-1].length-1]) 
         break;
       }else
       {
