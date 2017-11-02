@@ -32,7 +32,7 @@ int main()
   {
     for (int j = 0; j<cnt-1; j++)
     {
-      cout<<data[i][j];
+      cout<<data[i][j]<<" ";
     }
   }
   
