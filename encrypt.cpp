@@ -25,7 +25,7 @@ int main()
   }
   
   removeJunk(data,sentence_cnt,cnt);
-  fixApostrophe(data,sentence_cnt,cnt);5rf 
+  fixApostrophe(data,sentence_cnt,cnt);
   swapWords(data,sentence_cnt,cnt);
   
   for (int i = 0; i<sentence_cnt-1;i++)
