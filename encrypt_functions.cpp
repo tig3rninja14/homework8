@@ -83,7 +83,8 @@ void swapWords(string source[][MAX_WORDS], const short size1, const short size2)
         source[i][size2-1][first]=source[i][size2-1][first]-32;
         source[i][first][first]=source[i][first][first]+32;
         
-        strcat(source[i][size2-1].c_str(),source[i][first][source[i][size2-1].length()-1]);
+        strcat(source[i][size2-1].c_str(),source[i][first][source[i][size2-1].
+		length()-1]);
         source[i][first][source[i][first].length()-1] = '\0';
         break;
       }else
@@ -102,4 +103,23 @@ void swapWords(string source[][MAX_WORDS], const short size1, const short size2)
   return;  
 }
 
-
+void replaceWords(string source[][MAX_WORDS], const short size1, 
+                  const short size2)
+{
+  for(int i=0;i<size1-1;i++)
+  {
+    for(int j=0;j<size2-1;j++)
+	{
+	  for (int k = 0; k<NUM_BAD_WORDS; k++)
+      {
+        if (source[i][j]==BAD_WORDS[k])
+        {
+          source[i][j] = "";
+        }
+      } 
+	}   
+  }
+  
+  return;
+}  
+			
