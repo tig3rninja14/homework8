@@ -55,19 +55,29 @@ void replaceWords(string source[][MAX_WORDS], const short size1,
 
 const short MAX_SENTENCES=20;
 
-<<<<<<< HEAD
+
+
+
+void fixPunct(string & new_first, string & new_last);
+
+
+
+
+void fixCapitalization(string & lower, string & upper);
+
+
 
 const char PUNCT[3] = {'!','.','?'};
 
 const short NUM_PUNCT = 3;
-=======
-const NUM_BAD_WORDS=6;
->>>>>>> aeb25fc1b4cb1be6a6b729ea7048e6b4fd07ae0d
+
+const short NUM_BAD_WORDS=6;
+const short FIRST =0;
 
 const short NUM_JUNK = 4;
 
 const string JUNK[NUM_JUNK] = {"--umm--","--errr--","--like--","--nstuff--"};
 
-const string BAD_WORD[NUM_BAD_WORDS]=={"she","her","my","there","I","frogs"};
+const string BAD_WORDS[NUM_BAD_WORDS]={"she","her","my","there","I","frogs"};
 
 #endif  

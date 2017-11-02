@@ -40,7 +40,7 @@ int main()
   {
     for(int j=0;j<cnt-1;j++)
 	{
-	  fout<<data[i][j];
+	  fout<<data[i][j]<<" ";
 	}
   }	
   
