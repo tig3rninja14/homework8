@@ -50,6 +50,9 @@ void swapWords(string source[][MAX_WORDS], const short size1,
 const short MAX_SENTENCES=20;
 
 
+const char PUNCT[3] = {'!','.','?'};
+
+const short NUM_PUNCT = 3;
 
 const short NUM_JUNK = 4;
 

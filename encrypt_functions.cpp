@@ -69,7 +69,8 @@ void fixApostrophe(string source[][MAX_WORDS], const short size1,
 }
 
 
-void swapWords(string source[][MAX_WORDS], const short size1, const short size2)
+void swapWords(string source[][MAX_WORDS], const short size1, 
+               const short size2)
 {
   const short first =0;
   for (int i = 0; i<size1-1; i++)
@@ -82,8 +83,23 @@ void swapWords(string source[][MAX_WORDS], const short size1, const short size2)
         swap(source[i][j],source[i][size2-1]);
         source[i][size2-1][first]=source[i][size2-1][first]-32;
         source[i][first][first]=source[i][first][first]+32;
+        char first_word[MAX_WORDS];
+        strcpy(first_word,source[i][first].c_str());
         
-        strcat(source[i][size2-1].c_str(),source[i][first][source[i][size2-1].length()-1]);
+        short ctn = 0;
+        while (first_word[ctn]!='\0')
+        {
+          ctn++;
+        }
+        short punct_loc;
+        for (int k =  0; i<NUM_PUNCT; k++)
+        {
+          if (PUNCT[k]==source[i][first][ctn])
+          {
+            punct_loc = k;
+          }
+        }
+        strcat(const_cast<char>(source[i][size2-1].c_str()), PUNCT[punct_loc]);
         source[i][first][source[i][first].length()-1] = '\0';
         break;
       }else
