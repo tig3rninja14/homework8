@@ -39,7 +39,8 @@ void removeJunk(string source[][MAX_WORDS], const short size1, const short size2
   }
 }
 
-void fixApostrophe(string source[][MAX_WORDS], const short size1, const short size2)
+void fixApostrophe(string source[][MAX_WORDS], const short size1,
+                   const short size2)
 {
   char word[MAX_SENTENCES];
   
@@ -65,6 +66,38 @@ void fixApostrophe(string source[][MAX_WORDS], const short size1, const short si
     }
   }
   return;
+}
+
+
+void swapWords(string source[][MAX_WORDS], const short size1, const short size2)
+{
+  const short first =0;
+  for (int i = 0; i<size1-1; i++)
+  {
+    for (int j = 0; j<size2-1; j++)
+    {
+      if (i%2==0)
+      {
+        //even sentences
+        swap(source[i][j],source[i][size2-1]);
+        source[i][size2-1][first]=source[i][size2-1][first]-32;
+        source[i][first][first]=source[i][first][first]+32;
+        
+        break;
+      }else
+      {
+        //odd sentences 
+        if (j!=size2-1 && j%2==0)
+        {
+          swap(source[i][j],source[i][j+1]);
+        }                
+      }
+      
+    }
+  }
+  
+  
+  return;  
 }
 
 

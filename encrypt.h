@@ -41,6 +41,12 @@ void removeJunk(string source[][MAX_WORDS], const short size1, const short size2
 void fixApostrophe(string source[][MAX_WORDS], const short size1,
                    const short size2);
 
+//
+//
+//
+void swapWords(string source[][MAX_WORDS], const short size1, 
+               const short size2);
+
 const short MAX_SENTENCES=20;
 
 
