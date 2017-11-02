@@ -25,7 +25,7 @@ int main()
   }
   
   removeJunk(data,sentence_cnt,cnt);
-  fixApostrophe(data,sentence_cnt,cnt);
+  fixApostrophe(data,sentence_cnt,cnt);5rf 
   swapWords(data,sentence_cnt,cnt);
   
   for (int i = 0; i<sentence_cnt-1;i++)
@@ -36,6 +36,13 @@ int main()
     }
   }
   
+  for(int i=0;i<sentence_cnt-1;i++)
+  {
+    for(int j=0;j<cnt-1;j++)
+	{
+	  fout<<data[i][j];
+	}
+  }	
   
   fin.close();
   fout.close();
