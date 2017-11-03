@@ -67,6 +67,17 @@ void fixCapitalization(string & lower, string & upper);
 
 
 
+
+
+string reduce(const string& str,
+                   const string& fill = " ",
+                   const string& whitespace = " \t");
+
+string trim(const string& str,
+                 const string& whitespace = " \t");                   
+                   
+ 
+                   
 const char PUNCT[3] = {'!','.','?'};
 
 const short NUM_PUNCT = 3;

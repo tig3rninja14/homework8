@@ -72,53 +72,32 @@ void fixApostrophe(string source[][MAX_WORDS], const short size1,
 void swapWords(string source[][MAX_WORDS], const short size1, 
                const short size2)
 {
-  
   for (int i = 0; i<size1-1; i++)
   {
     bool even = false;
     for (int j = 0; j<size2-1; j++)
-    {
+    {    
       if (i%2==0 && !(even))
       {
+        
         //even sentences
-        swap(source[i][first],source[i][size2-1]);
+        swap(source[i][FIRST],source[i][size2-1]);
         
-        fixCapitalization(source[i][size2-1],source[i][first]);
+        fixCapitalization(source[i][size2-1],source[i][FIRST]);
+        fixPunct(source[i][FIRST],source[i][size2-1]);
         
         
-        char first_word[MAX_WORDS];
-        strcpy(first_word,source[i][first].c_str());
         
-
-        short ctn = 0;
-        while (first_word[ctn]!='\0')
-        {
-          ctn++;
-        }
-        short punct_loc;
-        for (int k =  0; i<NUM_PUNCT-1; k++)
-        {
-          if (PUNCT[k]==source[i][first][ctn])
-          {
-            punct_loc = k;
-          }
-        }
-        
-        source[i][size2-1]+=PUNCT[punct_loc];
-
-        
-        source[i][first][source[i][first].length()-1] = '\0';
         even = true;
-      }else
-      {
-        //odd sentences 
-        if (j!=size2-1 && j%2==0)
-        {
+      }else if (j!=size2-1 && j%2==0)                     
+         //odd sentences
+        {          
           swap(source[i][j],source[i][j+1]);
+          
+          
         }                
-      }
-      
     }
+    
   }
   return;  
 }
@@ -129,17 +108,16 @@ void replaceWords(string source[][MAX_WORDS], const short size1,
   for(int i=0;i<size1-1;i++)
   {
     for(int j=0;j<size2-1;j++)
-	{
-	  for (int k = 0; k<NUM_BAD_WORDS; k++)
+	  {
+	  for (int k = 0; k<NUM_BAD_WORDS-1; k++)
       {
         if (source[i][j]==BAD_WORDS[k])
         {
           source[i][j] = "";
         }
       } 
-	}   
+	  }   
   }
-  
   return;
 }
 
@@ -158,10 +136,47 @@ void fixPunct(string & new_first, string & new_last)
   short length_last = new_last.length();
   
   char temp;
-  temp = new_first[new_length];
+  temp = new_first[length_first-1];
   
   new_first[length_first-1]='\0'; 
   new_last+=temp;
   
   return;  
+}
+
+string reduce(const string& str,
+                   const string& fill,
+                   const string& whitespace)
+{
+    // trim first
+    string result = trim(str, whitespace);
+
+    // replace sub ranges
+    short beginSpace = result.find_first_of(whitespace);
+    while (beginSpace != string::npos)
+    {
+        const short endSpace = result.find_first_not_of(whitespace, beginSpace);
+        const short range = endSpace - beginSpace;
+
+        result.replace(beginSpace, range, fill);
+
+        const short newStart = beginSpace + fill.length();
+        beginSpace = result.find_first_of(whitespace, newStart);
+    }
+
+    return result;
+}
+
+
+string trim(const string& str,
+                 const string& whitespace)
+{
+    const short strBegin = str.find_first_not_of(whitespace);
+    if (strBegin == std::string::npos)
+        return ""; // no content
+
+    const short strEnd = str.find_last_not_of(whitespace);
+    const short strRange = strEnd - strBegin + 1;
+
+    return str.substr(strBegin, strRange);
 }
