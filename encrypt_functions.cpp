@@ -69,15 +69,12 @@ void fixApostrophe(string source[][MAX_WORDS], const short size1,
 }
 
 
-void swapWords(string source[][MAX_WORDS], const short size1, 
+void swapWords(string source[][MAX_WORDS], const short size1,
                const short size2)
 {
   for (int i = 0; i<size1-1; i++)
   {
-    bool even = false;
-    for (int j = 0; j<size2-1; j++)
-    {    
-      if (i%2==0 && !(even))
+    if (i%2==0)
       {
         
         //even sentences
@@ -85,16 +82,14 @@ void swapWords(string source[][MAX_WORDS], const short size1,
         
         fixCapitalization(source[i][size2-1],source[i][FIRST]);
         fixPunct(source[i][FIRST],source[i][size2-1]);
-        
-        
-        
-        even = true;
-      }else if (j!=size2-1 && j%2==0)                     
+      }
+    for (int j = 0; j<size2-1; j++)
+    {    
+      
+       if (j!=size2-1 && j%2==0)                     
          //odd sentences
         {          
           swap(source[i][j],source[i][j+1]);
-          
-          
         }                
     }
     
@@ -144,39 +139,3 @@ void fixPunct(string & new_first, string & new_last)
   return;  
 }
 
-string reduce(const string& str,
-                   const string& fill,
-                   const string& whitespace)
-{
-    // trim first
-    string result = trim(str, whitespace);
-
-    // replace sub ranges
-    short beginSpace = result.find_first_of(whitespace);
-    while (beginSpace != string::npos)
-    {
-        const short endSpace = result.find_first_not_of(whitespace, beginSpace);
-        const short range = endSpace - beginSpace;
-
-        result.replace(beginSpace, range, fill);
-
-        const short newStart = beginSpace + fill.length();
-        beginSpace = result.find_first_of(whitespace, newStart);
-    }
-
-    return result;
-}
-
-
-string trim(const string& str,
-                 const string& whitespace)
-{
-    const short strBegin = str.find_first_not_of(whitespace);
-    if (strBegin == std::string::npos)
-        return ""; // no content
-
-    const short strEnd = str.find_last_not_of(whitespace);
-    const short strRange = strEnd - strBegin + 1;
-
-    return str.substr(strBegin, strRange);
-}

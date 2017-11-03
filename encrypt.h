@@ -44,7 +44,7 @@ void fixApostrophe(string source[][MAX_WORDS], const short size1,
 //
 //
 //
-void swapWords(string source[][MAX_WORDS], const short size1, 
+void swapWords(string source[][MAX_WORDS], const short size1,
                const short size2);
 			   
 //the replaceWords() 
@@ -68,18 +68,16 @@ void fixCapitalization(string & lower, string & upper);
 
 
 
+struct sentence
+{
+  string[] m_sentence;
+  short m_num_words;
+  char m_punct;  
+};
 
-string reduce(const string& str,
-                   const string& fill = " ",
-                   const string& whitespace = " \t");
 
-string trim(const string& str,
-                 const string& whitespace = " \t");                   
-                   
- 
-                   
 const char PUNCT[3] = {'!','.','?'};
-
+const short WHITESPACE = 32;
 const short NUM_PUNCT = 3;
 
 const short NUM_BAD_WORDS=6;

@@ -8,35 +8,33 @@
 
 int main()
 {
-  string data[MAX_SENTENCES][MAX_WORDS];
+  string data[MAX_WORDS];
   ifstream fin("encrypted.dat");
   ofstream fout("decrypted.dat");
   short sentence_cnt =0;
   short cnt = 0;
   
+  sentence sentences[MAX_SENTENCES];
   
-  while(fin>>data[sentence_cnt][cnt])
+  while(fin>>data[cnt])
   {
-    if(isEnd(data[sentence_cnt][cnt].c_str(),data[sentence_cnt][cnt].size())) 
+    if(isEnd(data[cnt].c_str(),strlen(data[cnt]))) 
     {
+      sentences[sentence_cnt].m_num_words = cnt++;
+      
       sentence_cnt++;
-    }
-    cnt++;
-  }
-  
-  for (int i =0; i<sentence_cnt-1;i++)
-  {
-    for (int j = 0; j<cnt-1;j++)
-    {
-      //data[i][j]=reduce(data[i][j]);
-    }
-  }
+    }    
+    cnt++;    
+  }  
   
   
-  //removeJunk(data,sentence_cnt,cnt);
-  //fixApostrophe(data,sentence_cnt,cnt);
-  //swapWords(data,sentence_cnt,cnt);
-  //replaceWords(data,sentence_cnt,cnt);
+  
+  removeJunk(data,sentence_cnt,cnt);
+  fixApostrophe(data,sentence_cnt,cnt);
+  swapWords(data,sentence_cnt,cnt);
+  replaceWords(data,sentence_cnt,cnt);
+  
+  
   
   for (int i = 0; i<sentence_cnt-1;i++)
   {
