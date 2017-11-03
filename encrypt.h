@@ -13,6 +13,9 @@
 #include <cstring>
 using namespace std;
 
+const short MAX_WORDS=50;
+//maximum number of words in each sentence
+
 
 struct sentence
 {
@@ -98,8 +101,6 @@ const short NUM_BAD_WORDS=6;
 const short FIRST =0;
 //first letter of the sentence
 
-const short MAX_WORDS=50;
-//maximum number of words in each sentence
 
 const short NUM_JUNK = 4;
 //maximum number of junk

@@ -20,8 +20,6 @@ int main()
   
   while(fin>>data[cnt])
   {
-    //cout<<"\n";
-    //cout<<data[cnt]<<endl;
     if(isEnd(data[cnt].c_str(),strlen(data[cnt].c_str()))) 
     {
       sentences[sentence_cnt].m_num_words = cnt;
@@ -54,7 +52,7 @@ int main()
       cout<<sentences[i].m_sentence[j]<<" ";
     }
   }	
-  
+  cout<<endl;
   fin.close();
   fout.close();
   
