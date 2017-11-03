@@ -19,7 +19,8 @@ void signoff()
 
 bool isEnd(const char source[], const short size)
 {      
-  return (source[size-1] == '.' || source[size-1] == '!' || source[size-1] == '?');
+  return (source[size-1] == '.' || source[size-1] == '!' || source[size-1] 
+          == '?');
 }
 
 void removeJunk(string sentence[], const short size)

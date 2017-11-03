@@ -14,8 +14,6 @@
 using namespace std;
 
 
-const short MAX_WORDS=50;
-
 struct sentence
 {
   string m_sentence[MAX_WORDS];
@@ -83,21 +81,33 @@ void fixCapitalization(string & lower, string & upper);
 
 
 const short MAX_SENTENCES=20;
-
-
-
+//maximum number of sentences you can have in the array
 
 const char PUNCT[3] = {'!','.','?'};
+//array of all the punctuation marks
+
 const short WHITESPACE = 32;
+//ascii value for whitespace
+
 const short NUM_PUNCT = 3;
+//maximum number of puntuation marks
 
 const short NUM_BAD_WORDS=6;
+//maximum number of "bad" words 
+
 const short FIRST =0;
+//first letter of the sentence
+
+const short MAX_WORDS=50;
+//maximum number of words in each sentence
 
 const short NUM_JUNK = 4;
+//maximum number of junk
 
 const string JUNK[NUM_JUNK] = {"--umm--","--errr--","--like--","--nstuff--"};
+//array of all the junk words that need to be removed
 
 const string BAD_WORDS[NUM_BAD_WORDS]={"she","her","my","there","I","frogs"};
+//array of all the bad words that need to be decrypted
 
 #endif  
