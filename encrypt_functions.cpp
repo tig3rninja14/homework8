@@ -22,24 +22,19 @@ bool isEnd(const char source[], const short size)
   return (source[size-1] == '.' || source[size-1] == '!' || source[size-1] == '?');
 }
 
-short removeJunk(string sentence[], const short size)
+void removeJunk(string sentence[], const short size)
 {
-  short num_removed=0;
-  for (int i = 0; i<size-1-num_removed;i++)
+  for (int i = 0; i<size-1;i++)
   {
     for (int k = 0; k<NUM_JUNK; k++)
     {      
       if (sentence[i]==JUNK[k])
       {
-        for (int j=i;j<=size-i-1;j++)
-        {
-          sentence[j] = sentence[j+1];
-        }
-         num_removed++;
+        sentence[i]="";
       }
     }
   }
-  
+  return;
 }
 
 void fixApostrophe(string sentence[], const short size)
@@ -117,8 +112,7 @@ void fixCapitalization(string & lower, string & upper)
 
 void fixPunct(string & new_first, string & new_last)
 {
-  short length_first = new_first.length();
-  short length_last = new_last.length();
+  short length_first = new_first.length(); 
   
   char temp;
   temp = new_first[length_first-1];

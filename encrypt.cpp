@@ -40,7 +40,7 @@ int main()
   
   for (int i = 0; i<sentence_cnt;i++)
   {  
-    sentences[i].m_num_words = removeJunk(sentences[i].m_sentence,sentences[i].m_num_words);
+    removeJunk(sentences[i].m_sentence,sentences[i].m_num_words);
     fixApostrophe(sentences[i].m_sentence,sentences[i].m_num_words);
     swapWords(sentences[i].m_sentence,i+1,sentences[i].m_num_words);
     replaceWords(sentences[i].m_sentence,sentences[i].m_num_words);    
