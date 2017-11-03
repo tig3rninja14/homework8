@@ -13,6 +13,17 @@
 #include <cstring>
 using namespace std;
 
+
+const short MAX_WORDS=50;
+
+struct sentence
+{
+  string m_sentence[MAX_WORDS];
+  short m_num_words;
+  char m_punct;  
+};
+
+
 //The greet() outputs a greeting to the screen
 //Pre: None
 //Post: outputs a greeting to the screen
@@ -28,30 +39,27 @@ void signoff();
 //Post:
 bool isEnd(const char source[],const short size);
 
-const short MAX_WORDS=50;
+
 
 //The removeJunk() removes junk words from the enryption.
 //Pre:
 //Post:
-void removeJunk(string source[][MAX_WORDS], const short size1, const short size2);
+short removeJunk(string sentence[], const short size);
 
 //The fixApostrophe() will unscramble words with apostrophes in them.
 //Pre:
 //Post:
-void fixApostrophe(string source[][MAX_WORDS], const short size1,
-                   const short size2);
+void fixApostrophe(string sentence[], const short size);
 
 //
 //
 //
-void swapWords(string source[][MAX_WORDS], const short size1,
-               const short size2);
+void swapWords(string sentence[], const short count, const short size);
 			   
 //the replaceWords() 
 //
 //
-void replaceWords(string source[][MAX_WORDS], const short size1, 
-                  const short size2);
+void replaceWords(string sentence[], const short size);
 
 const short MAX_SENTENCES=20;
 
@@ -68,12 +76,7 @@ void fixCapitalization(string & lower, string & upper);
 
 
 
-struct sentence
-{
-  string[] m_sentence;
-  short m_num_words;
-  char m_punct;  
-};
+
 
 
 const char PUNCT[3] = {'!','.','?'};

@@ -13,46 +13,52 @@ int main()
   ofstream fout("decrypted.dat");
   short sentence_cnt =0;
   short cnt = 0;
-  
   sentence sentences[MAX_SENTENCES];
+  
+  greet();
+  
   
   while(fin>>data[cnt])
   {
-    if(isEnd(data[cnt].c_str(),strlen(data[cnt]))) 
+    //cout<<"\n";
+    //cout<<data[cnt]<<endl;
+    if(isEnd(data[cnt].c_str(),strlen(data[cnt].c_str()))) 
     {
-      sentences[sentence_cnt].m_num_words = cnt++;
-      
+      sentences[sentence_cnt].m_num_words = cnt;
+      for (int i = 0; i<cnt-1; i++)
+      {
+        sentences[sentence_cnt].m_sentence[i] = data[i];
+      }      
+      sentences[sentence_cnt].m_punct = data[cnt][data[cnt].length()-1];
       sentence_cnt++;
+      cnt=0;
     }    
     cnt++;    
   }  
+
   
   
-  
-  removeJunk(data,sentence_cnt,cnt);
-  fixApostrophe(data,sentence_cnt,cnt);
-  swapWords(data,sentence_cnt,cnt);
-  replaceWords(data,sentence_cnt,cnt);
-  
-  
-  
-  for (int i = 0; i<sentence_cnt-1;i++)
-  {
-    for (int j = 0; j<cnt-1; j++)
-    {
-      cout<<data[i][j]<<" ";
-    }
+  for (int i = 0; i<sentence_cnt;i++)
+  {  
+    sentences[i].m_num_words = removeJunk(sentences[i].m_sentence,sentences[i].m_num_words);
+    fixApostrophe(sentences[i].m_sentence,sentences[i].m_num_words);
+    swapWords(sentences[i].m_sentence,i+1,sentences[i].m_num_words);
+    replaceWords(sentences[i].m_sentence,sentences[i].m_num_words);    
   }
-  
+  cout<<endl;
   for(int i=0;i<sentence_cnt-1;i++)
   {
-    for(int j=0;j<cnt-1;j++)
-	{
-	  fout<<data[i][j]<<" ";
-	}
+    for(int j=0;j<sentences[i].m_num_words-1;j++)
+    {
+      fout<<sentences[i].m_sentence[j]<<" ";
+      cout<<sentences[i].m_sentence[j]<<" ";
+    }
   }	
   
   fin.close();
   fout.close();
+  
+  signoff();
+  
   return 0;  
 }

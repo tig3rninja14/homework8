@@ -13,105 +13,95 @@ void greet()
 
 void signoff()
 {
-  cout<<"Thank you for using the decryption protocol!"<<endl;
+  cout<<"\nThank you for using the decryption protocol!"<<endl;
   return;
 }
 
 bool isEnd(const char source[], const short size)
-{
+{      
   return (source[size-1] == '.' || source[size-1] == '!' || source[size-1] == '?');
 }
 
-void removeJunk(string source[][MAX_WORDS], const short size1, const short size2)
+short removeJunk(string sentence[], const short size)
 {
-  for (int i = 0; i<size1-1;i++)
+  short num_removed=0;
+  for (int i = 0; i<size-1-num_removed;i++)
   {
-    for (int j = 0; j<size2-1; j++)
-    {
-      for (int k = 0; k<NUM_JUNK; k++)
+    for (int k = 0; k<NUM_JUNK; k++)
+    {      
+      if (sentence[i]==JUNK[k])
       {
-        if (source[i][j]==JUNK[k])
+        for (int j=i;j<=size-i-1;j++)
         {
-          source[i][j] = "";
+          sentence[j] = sentence[j+1];
         }
+         num_removed++;
       }
     }
   }
+  
 }
 
-void fixApostrophe(string source[][MAX_WORDS], const short size1,
-                   const short size2)
+void fixApostrophe(string sentence[], const short size)
 {
   char word[MAX_SENTENCES];
   
-  for (int i = 0; i<size1-1;i++)
+  for (int i = 0; i<size-1;i++)
   {
-    for (int j = 0; j<size2-1; j++)
+    strcpy(word,sentence[i].c_str());
+    for (int k = strlen(word)-1; k>FIRST; k--)
     {
-      strcpy(word,source[i][j].c_str());
-      for (int k = strlen(word)-1; k>0; k--)
+      if (word[k]=='\'')
       {
-        if (word[k]=='\'')
+        if (k!=strlen(word)-1)
         {
-          if (k!=strlen(word)-1)
-          {
-            swap(word[k],word[k+1]);
-          }else
-          {
-            swap(word[strlen(word)-1],word[0]);
-          }
+          swap(word[k],word[k+1]);
+        }else
+        {
+          swap(word[strlen(word)-1],word[FIRST]);
         }
       }
-      source[i][j] = word;
     }
+      sentence[i] = word;
   }
   return;
 }
 
 
-void swapWords(string source[][MAX_WORDS], const short size1,
-               const short size2)
-{
-  for (int i = 0; i<size1-1; i++)
-  {
-    if (i%2==0)
-      {
-        
-        //even sentences
-        swap(source[i][FIRST],source[i][size2-1]);
-        
-        fixCapitalization(source[i][size2-1],source[i][FIRST]);
-        fixPunct(source[i][FIRST],source[i][size2-1]);
-      }
-    for (int j = 0; j<size2-1; j++)
-    {    
+void swapWords(string sentence[],const short count, const short size)
+{   
+  if (count%2==0)
+    {  
+      //even sentences            
+      swap(sentence[FIRST], sentence[size-1]);      
       
-       if (j!=size2-1 && j%2==0)                     
-         //odd sentences
-        {          
-          swap(source[i][j],source[i][j+1]);
-        }                
+      fixCapitalization(sentence[size-1],sentence[FIRST]);
+      fixPunct(sentence[FIRST],sentence[size-1]);
+    }else if (count%2==1)
+    {
+      for (int j = 0; j<size-1; j++)
+      {    
+        if (j!=size-1 && j%2==0)                     
+          //odd sentences
+          {          
+            swap(sentence[j],sentence[j+1]);
+          }                 
+      }
     }
-    
-  }
   return;  
 }
 
-void replaceWords(string source[][MAX_WORDS], const short size1, 
-                  const short size2)
+void replaceWords(string sentence[], const short size)
 {
-  for(int i=0;i<size1-1;i++)
-  {
-    for(int j=0;j<size2-1;j++)
-	  {
+  for(int i=0;i<size-1;i++)
+  {    
 	  for (int k = 0; k<NUM_BAD_WORDS-1; k++)
+    {
+      if (sentence[i]==BAD_WORDS[k])
       {
-        if (source[i][j]==BAD_WORDS[k])
-        {
-          source[i][j] = "";
-        }
-      } 
-	  }   
+        sentence[i] = "";
+      }
+    }   
   }
   return;
 }
